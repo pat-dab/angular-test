@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-default " role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><span></span></a>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="welcome" title="home page">
+            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Ogłoszenie<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a routerLink="/adds"> <span>Wszystkie</span></a>
+            </li>
+            <li>
+              <a routerLink="/adds/add"> <span>Dodaj nowe</span></a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<router-outlet></router-outlet>
+
+

@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="container xd-container">
+    <h2>Informacje o ogłoszeniu</h2>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nazwa ogłoszenia</th>
+          <th>Opis</th>
+          <th>Kategoria</th>
+          <th>Typ</th>
+          <th>Cena</th>
+          <th>Liczba pokoi</th>
+          <th>Imię osoby kontaktowej</th>
+          <th>Nazwisko osoby kontaktowej</th>
+          <th>Numer telefonu</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>{{ adds.addTitle }}</td>
+          <td>{{ adds.addDescription }}</td>
+          <td>{{ adds.category }}</td>
+          <td>{{ adds.type }}</td>
+          <td>{{ adds.price }}</td>
+          <td>{{ adds.roomNumber }}</td>
+          <td>{{ adds.contactName }}</td>
+          <td>{{ adds.contactSurname }}</td>
+          <td>{{ adds.telephone }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="btn btn-default" (click)="gotoAddsList()">Powrót</button>
+    <button class="btn btn-default" (click)="editAdds()">Edycja ogłoszenia</button>
+    <button class="btn btn-default" (click)="deleteAdds()">Usuń ogłoszenie</button>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+
+
+<div class="container-fluid">
+  <div class="container xd-container">
+    <h2>
+      Edycja Ogłoszenia
+    </h2>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    <form (ngSubmit)="onSubmit(addsForm.value)" #addsForm="ngForm" class="form-horizontal">
+      <div class="form-group" hidden="true">
+        <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="adds.id" name="id"/>
+      </div>
+
+      <div class="form-group has-feedback" [class.has-success]="addTitle.valid" [class.has-error]="!addTitle.valid">
+        <label for="addTitle" class="col-sm-2 control-label">Tytuł</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="addTitle" [(ngModel)]="adds.addTitle" name="addTitle" required maxlength="30"  #addTitle="ngModel"/>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="addTitle.valid" [class.glyphicon-remove]="!addTitle.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="addTitle.dirty && addTitle.hasError('required')">Tytuł jest wymagany</span>
+          <span class="help-block" *ngIf="addTitle.dirty && addTitle.hasError('maxlength')">Maksymalnie 30 znaków</span>
+        </div>
+      </div>
+
+      <div class="form-group has-feedback" [class.has-success]="addDescription.valid" [class.has-error]="!addDescription.valid">
+        <label for="addDescription" class="col-sm-2 control-label">Opis</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="addDescription" [(ngModel)]="adds.addDescription" name="addDescription" required maxlength="255"  #addDescription="ngModel"/>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="addDescription.valid" [class.glyphicon-remove]="!addDescription.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="addDescription.dirty && addDescription.hasError('required')">Opis jest wymagany</span>
+          <span class="help-block" *ngIf="addDescription.dirty && addDescription.hasError('maxlength')">Maksymalnie 255 znaków</span>
+        </div>
+      </div>
+
+      <div class="form-group has-feedback" [class.has-success]="category.valid" [class.has-error]="!category.valid">
+        <label for="category" class="col-sm-2 control-label">Kategoria</label>
+        <div class="col-sm-10">
+          <select class="form-control" [(ngModel)]="adds.category" #category="ngModel" name="category">
+            <option value="1">Wynajem</option>
+            <option value="2">Sprzedaż</option>
+          </select>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="category.valid" [class.glyphicon-remove]="!category.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="category.dirty && category.hasError('required')">Cena jest wymagana</span>
+        </div>
+      </div>
+
+      <div class="form-group has-feedback" [class.has-success]="type.valid" [class.has-error]="!type.valid">
+        <label for="type" class="col-sm-2 control-label">Kategoria</label>
+        <div class="col-sm-10">
+          <select class="form-control" [(ngModel)]="adds.type" #type="ngModel" name="type">
+            <option value="1">Mieszkania</option>
+            <option value="2">Domy</option>
+            <option value="1">Działki</option>
+            <option value="2">Garaże</option>
+          </select>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="type.valid" [class.glyphicon-remove]="!type.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="type.dirty && type.hasError('required')">Cena jest wymagana</span>
+        </div>
+      </div>
+
+      <div class="form-group has-feedback" [class.has-success]="price.valid" [class.has-error]="!price.valid">
+        <label for="price" class="col-sm-2 control-label">Cena</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="price" [(ngModel)]="adds.price" name="price" required maxlength="40" pattern="^[0-9]{0,10}$" #price="ngModel"/>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="price.valid" [class.glyphicon-remove]="!price.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="price.dirty && price.hasError('required')">Cena jest wymagana</span>
+          <span class="help-block" *ngIf="price.dirty && price.hasError('maxlength')">MAksymalnie 40 znaków</span>
+          <span class="help-block" *ngIf="price.dirty && price.hasError('pattern')" >Tylko cyfry</span>
+        </div>
+      </div>
+
+      <div class="form-group has-feedback" [class.has-success]="roomNumber.valid" [class.has-error]="!roomNumber.valid">
+        <label for="roomNumber" class="col-sm-2 control-label">Liczba pokoi</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="roomNumber" [(ngModel)]="adds.roomNumber" name="roomNumber" required maxlength="5" pattern="^[0-9]{0,10}$" #roomNumber="ngModel"/>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="roomNumber.valid" [class.glyphicon-remove]="!roomNumber.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="roomNumber.dirty && roomNumber.hasError('required')">Liczba pokoi jest wymagana</span>
+          <span class="help-block" *ngIf="roomNumber.dirty && roomNumber.hasError('maxlength')">MAksymalnie 5 znaków</span>
+          <span class="help-block" *ngIf="roomNumber.dirty && roomNumber.hasError('pattern')" >Tylko cyfry</span>
+        </div>
+      </div>
+
+      <div class="form-group has-feedback" [class.has-success]="contactSurname.valid" [class.has-error]="!contactSurname.valid">
+        <label for="contactSurname" class="col-sm-2 control-label">Nazwisko osoby kontaktowej</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="contactSurname" [(ngModel)]="adds.contactSurname" name="contactSurname" required  #contactSurname="ngModel"/>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="contactSurname.valid" [class.glyphicon-remove]="!contactSurname.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="contactSurname.dirty && contactSurname.hasError('required')">Nazwisko osoby kontaktowej jest wymagane</span>
+        </div>
+      </div>
+
+
+      <div class="form-group has-feedback" [class.has-success]="contactName.valid" [class.has-error]="!contactName.valid">
+        <label for="contactName" class="col-sm-2 control-label">Imię osoby kontaktowej</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="contactName" [(ngModel)]="adds.contactName" name="contactName" required  #contactName="ngModel"/>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="contactName.valid" [class.glyphicon-remove]="!contactName.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="contactName.dirty && contactName.hasError('required')">Imię osoby kontaktowej jest wymagane</span>
+        </div>
+      </div>
+
+
+      <div class="form-group has-feedback" [class.has-success]="telephone.valid" [class.has-error]="!telephone.valid">
+        <label for="telephone" class="col-sm-2 control-label">Telefon</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="telephone" [(ngModel)]="adds.telephone" name="telephone" required maxlength="10" pattern="^[0-9]{0,10}$" #telephone="ngModel"/>
+          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="telephone.valid" [class.glyphicon-remove]="!telephone.valid" aria-hidden="true"></span>
+          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('required')">Phone number is required</span>
+          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('maxlength')">Phone number cannot be more than 10 digits long</span>
+          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('pattern')" >Phone number only accept digits</span>
+        </div>
+      </div>
+
+      <app-name-editor></app-name-editor>
+    </form>
+  </div>
+</div>

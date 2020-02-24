@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="container xd-container">
+    <h2>Ogłoszenia</h2>
+    <div class="table-striped">
+      <div class="row">
+        <div>
+          <input
+            [(ngModel)]="listFilter"
+            type="text"
+            class="form-control"
+            id="filterInput"
+            placeholder="Filtrowanie po cenie"
+          />
+        </div>
+        <div>
+          <div *ngIf="listFilter" class="form-text text-muted">
+            Filtruje po: {{ listFilter }}
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nazwa ogłoszenia</th>
+            <th>Opis</th>
+            <th>Kategoria</th>
+            <th>Typ</th>
+            <th>Cena</th>
+            <th>Liczba pokoi</th>
+            <th>Imię osoby kontaktowej</th>
+            <th>Nazwisko osoby kontaktowej</th>
+            <th>Numer telefonu</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let add of filteredAdds" >
+            <td class="addsTitle">
+              <a
+                routerLink="/adds/{{ adds.id }}"
+                routerLinkActive="active"
+                (click)="onSelect(adds)"
+                >{{ add.addTitle }}</a
+              >
+            </td>
+            <td>{{ add.addDescription }}</td>
+            <td>{{ add.category }}</td>
+            <td>{{ add.type }}</td>
+            <td>{{ add.price }}</td>
+            <td>{{ add.roomNumber }}</td>
+            <td>{{ add.contactName }}</td>
+            <td>{{ add.contactSurname }}</td>
+            <td>{{ add.telephone }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <button class="btn btn-default" (click)="addAdds()">
+          Dodaj ogłoszenie
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
